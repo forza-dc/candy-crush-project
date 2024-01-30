@@ -2,7 +2,7 @@ name: Build,Analyze,scan
 on:
   push:
     branches:
-      - main
+      - develop
 jobs:
   build-analyze-scan:
     name: Build
