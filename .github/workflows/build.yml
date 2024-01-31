@@ -23,3 +23,12 @@ jobs:
         run: |
           # Scanning files
           trivy fs . > trivyfs.txt
+      - name: Docker build and push
+        run: |
+          # Run commands to build and push Docker images
+          docker build -t candycrush .
+          docker tag candycrush stforza/candycrush:latest
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push stforza/candycrush:latest
+        env:
+          DOCKER_CLI_ACI: 1
